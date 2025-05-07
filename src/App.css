@@ -1,0 +1,129 @@
+:root {
+  --page-bg: #f0f0f0;          
+  --calc-bg: #111;           
+  --display-bg: rgba(255,255,255,0.05);
+  --func-gray: #a5a5a5;
+  --digit-gray: #404040;
+  --operator-orange: #ff9500;
+  --fg-white: #fff;
+  --fg-black: #000;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  background: var(--page-bg);
+}
+.app-wrapper {
+  height: 100vh;
+  /* min-height: 100vh;   */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;    
+  /* background: var(--page-bg);   */
+  padding: 16px;           
+  box-sizing: border-box;
+}
+
+
+.calculator-title {
+
+  font-size: 2rem;
+  color: var(--digit-gray);
+  margin-bottom: 24px;
+  user-select: none;
+  
+}
+
+.calculator {
+
+  margin-top: 20px;
+  width: clamp(320px, 90vw, 360px);
+  background: var(--calc-bg);
+  border-radius: 20px;
+  /* overflow: hidden; */
+
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.calculator-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display {
+  background: var(--display-bg);
+  color: var(--fg-white);
+  font-size: 2.5rem;
+  text-align: right;
+  padding: 16px;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.keypad {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.button {
+  width: 100%;
+  aspect-ratio: 1 / 1;            
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--fg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.button.function {
+  background: var(--func-gray);
+  color: var(--fg-black);
+}
+
+.button.digit {
+  background: var(--digit-gray);
+}
+
+.button.operator {
+  background: var(--operator-orange);
+}
+
+.button.wide {
+  grid-column: span 2;
+  aspect-ratio: 2 / 1;
+  justify-content: flex-start;
+  padding-left: 16px;
+  border-radius: 36px;
+}
+
+.button:not(.wide) {
+  border-radius: 50%;
+}
+
+@media (max-width: 400px) {
+  .calculator-title { font-size: 1.8rem; margin-bottom: 16px; }
+  .display { font-size: 2rem; padding: 12px; }
+  .keypad { gap: 8px; }
+  .button { font-size: 1.3rem; }
+}
